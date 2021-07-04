@@ -1,0 +1,14 @@
+[Unit]
+Description=Nginx
+After=syslog.target network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/testportal_ts/source
+#EnvironmentFile=
+ExecStart=/usr/sbin/nginx -c /opt/testportal_ts/source/webserver/nginx/nginx.conf
+ExecReload=/usr/sbin/nginx -s reload
+ExecStop=/usr/sbin/nginx -s quit
+
+[Install]
+WantedBy=multi-user.target
